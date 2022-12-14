@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  helm-github-repos:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2022-12-14T13:34:30.717920614Z"
+    description: A Helm chart for Kubernetes
+    digest: 513005b11f7bd3ae374ab2c82585bbf8804e8e0eaff431c6e8b2e5806b6b5fb3
+    name: helm-github-repos
+    type: application
+    urls:
+    - https://coop-scratchpad.github.io/helm-github-repos/helm-github-repos-0.1.0.tgz
+    version: 0.1.0
+generated: "2022-12-14T13:34:30.717040409Z"
