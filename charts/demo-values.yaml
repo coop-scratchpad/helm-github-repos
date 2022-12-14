@@ -1,0 +1,34 @@
+# name of the github repository
+name: demo-repo
+provider: default
+
+repositoryConfig: #{}
+  description: bla die bla
+  hasIssues: true
+  template:
+  - owner: upbound
+    repository: upjet-provider-template
+  visibility: private
+  securityAndAnalysis: []
+
+
+branchProtection:
+  main:
+    requiredPullRequestReviews:
+      - requiredApprovingReviewCount: 2
+  unmain:
+    requiredPullRequestReviews:
+      - requiredApprovingReviewCount: 1
+
+access:
+  crossplane-test: push
+
+import:
+  # repository:
+  #   ExternalName: # external name of repository
+  branchProtection: {}
+    # main:
+    #   externalName:
+  # access: #{}
+  #   croassplane-test:
+  #     externalName: external name of resource

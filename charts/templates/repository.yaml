@@ -1,0 +1,14 @@
+---
+apiVersion: repository.cp-github.upbound.io/v1alpha1
+kind: Repository
+metadata:
+  name: {{ .Values.name }}
+  {{- if .Values.import.repository.ExternalName }}
+  annotations:
+    crossplane.io/external-name: {{ .Values.import.repository.ExternalName }}
+  {{- end }}
+spec:
+  forProvider:
+    {{- .Values.repositoryConfig | toYaml | nindent 4 }}
+  providerConfigRef:
+    name: {{ .Values.provider }}

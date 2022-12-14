@@ -1,0 +1,20 @@
+
+{{- range $pattern, $settings := .Values.branchProtection }}
+---
+apiVersion: branchprotection.cp-github.upbound.io/v1alpha1
+kind: Protection
+metadata:
+  name: {{ $.Values.name }}-{{ $pattern }}
+  {{- if  (dig "branchProtection" $pattern "externalName" false $.Values.import )  }}
+  annotations:
+    crossplane.io/external-name: {{ dig "branchProtection" $pattern "externalName" "unset" $.Values.import }}
+  {{- end }}
+spec:
+  forProvider:
+    repositoryIdRef:
+      name: {{ $.Values.name }}
+    pattern: {{ $pattern }}
+    {{ $settings | toYaml | nindent 4 }}
+  providerConfigRef:
+    name: {{ $.Values.provider }}
+{{- end }}

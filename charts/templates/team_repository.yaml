@@ -1,0 +1,19 @@
+{{- range $team, $acl := .Values.access }}
+---
+apiVersion: teamrepository.cp-github.upbound.io/v1alpha1
+kind: Repository
+metadata:
+  name: {{ $.Values.name }}-{{ $team }}
+  {{- if  (dig "access" $team "externalName" false $.Values.import )  }}
+  annotations:
+    crossplane.io/external-name: {{ dig "access" $team "externalName" "unset" $.Values.import }}
+  {{- end }}
+spec:
+  forProvider:
+    repositoryRef:
+      name: {{ $.Values.name }}
+    permission: {{ $acl }}
+    teamId: {{ $team }}
+  providerConfigRef:
+    name: {{ $.Values.provider }}
+{{- end }}

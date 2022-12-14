@@ -1,0 +1,28 @@
+# name of the github repository
+name: 
+provider: default
+
+repositoryConfig: {}
+  # description: bla die bla
+  # hasIssues: true
+
+branchProtection: {}
+  # main:
+  #   requiredPullRequestReviews:
+  #     - requiredApprovingReviewCount: 2
+  # unmain:
+  #   requiredPullRequestReviews:
+  #     - requiredApprovingReviewCount: 1
+
+access: {}
+  #crossplane-test: push
+
+import:
+  repository:
+    ExternalName: # external name of repository
+  branchProtection: {}
+    # main:
+    #   externalName:
+  access: {}
+    # croassplane-test:
+    #   externalName: external name of resource
